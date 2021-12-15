@@ -13,18 +13,18 @@ if(isset($_POST["submit"])){
   if(mysqli_num_rows($duplicate) > 0){
     echo
     "<script> alert('Username or Email Has Already Taken'); </script>";
-    exit;
-  }
-
-  if($password == $confirmpassword){
-    $query = "INSERT INTO tb_user VALUES('','$name','$username','$email','$password')";
-    mysqli_query($conn,$query);
-    echo
-    "<script> alert('Registration Successfull'); </script>";
   }
   else{
-    echo
-    "<script> alert('Password Does Not Match'); </script>";
+    if($password == $confirmpassword){
+      $query = "INSERT INTO tb_user VALUES('','$name','$username','$email','$password')";
+      mysqli_query($conn, $query);
+      echo
+      "<script> alert('Registration Successful'); </script>";
+    }
+    else{
+      echo
+      "<script> alert('Password Does Not Match'); </script>";
+    }
   }
 }
 ?>

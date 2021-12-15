@@ -9,7 +9,7 @@ if(isset($_POST["submit"])){
   $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$usernameemail' OR email = '$usernameemail'");
   $row = mysqli_fetch_assoc($result);
   if(mysqli_num_rows($result) > 0){
-    if($password == $row["password"]){
+    if($password == $row['password']){
       $_SESSION["login"] = true;
       $_SESSION["id"] = $row["id"];
       header("Location: index.php");
@@ -17,13 +17,11 @@ if(isset($_POST["submit"])){
     else{
       echo
       "<script> alert('Wrong Password'); </script>";
-      exit;
     }
   }
   else{
     echo
     "<script> alert('User Not Registered'); </script>";
-    exit;
   }
 }
 ?>
